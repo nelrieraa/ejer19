@@ -8,9 +8,11 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Logging → archivo access.log + consola
-const logStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
-app.use(morgan('combined', { stream: logStream }));
+// Logging → archivo access.log en local, solo consola en Vercel
+if (!process.env.VERCEL) {
+  const logStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
+  app.use(morgan('combined', { stream: logStream }));
+}
 app.use(morgan('dev'));
 
 // Middlewares
@@ -64,8 +66,10 @@ app.use((req, res) => {
   res.status(404).send('<h1>404 — Página no encontrada</h1><a href="/">Volver al inicio</a>');
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 DevFolio corriendo en http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🚀 DevFolio corriendo en http://localhost:${PORT}`);
+  });
+}
 
 module.exports = app;
