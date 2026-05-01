@@ -47,7 +47,6 @@ function dashboard(user, projects, socialLinks, session) {
 
     <div class="dash-grid">
 
-      <!-- Perfil -->
       <section class="card">
         <h2 class="card-title">Mi Perfil</h2>
         <form action="/dashboard/profile" method="POST" class="form">
@@ -67,7 +66,6 @@ function dashboard(user, projects, socialLinks, session) {
         </form>
       </section>
 
-      <!-- Redes sociales -->
       <section class="card">
         <h2 class="card-title">Redes Sociales</h2>
         <div class="item-list">${socialRows}</div>
@@ -92,7 +90,6 @@ function dashboard(user, projects, socialLinks, session) {
 
     </div>
 
-    <!-- Proyectos -->
     <section class="card" style="margin-top:1.5rem">
       <h2 class="card-title">Mis Proyectos <span class="badge-count">${projects.length}</span></h2>
       <div class="item-list">${projectRows}</div>

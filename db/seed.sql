@@ -6,7 +6,6 @@ TRUNCATE TABLE projects;
 TRUNCATE TABLE users;
 SET FOREIGN_KEY_CHECKS = 1;
 
--- password de todos: 'password123' → MD5 = 482c811da5d5b4bc6d497ffa98491e38
 INSERT INTO users (username, password, bio, email, photo) VALUES
 ('ana_dev',     MD5('password123'), 'Desarrolladora Full Stack con 3 años de experiencia en React y Node.js. Apasionada por el código limpio y la UX.', 'ana@example.com',    'https://i.pravatar.cc/150?img=47'),
 ('carlos_code', MD5('password123'), 'Backend developer. Python y Django son mi stack principal. Actualmente aprendiendo Rust.',                          'carlos@example.com', 'https://i.pravatar.cc/150?img=12');
